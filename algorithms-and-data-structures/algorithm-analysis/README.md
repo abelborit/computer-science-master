@@ -14,13 +14,13 @@
 
   La Notación Big-O es una forma de medir el tiempo lo bien que escala un programa o un algoritmo y el tiempo que tardará en ejecutar. Esta medición nos resultará muy útil para comparar la eficiencia de dos algoritmos, por ejemplo de ordenamiento.
 
-  ![Big-O Complejidad](/Assets/images/big-o-complexity-chart.png "Big-O Complejidad Imagen")
+  ![Big-O Complejidad](/algorithms-and-data-structures/algorithm-analysis/Assets/images/big-o-complexity-chart.png "Big-O Complejidad Imagen")
 
 - ## Introducción de Matplotlib
 
   Matplotlib es una librería open source que pertenece a Python en la que se pueden crear visualizaciones animadas, estáticas e interactivas en Python. Se pueden usar gráficas con barras verticales, barras horizontales, líneas, etc.
 
-  ![Anatomía de una figura Matplotlib](/Assets/images/Anatonia-de-un-grafico-matplotlibjpg.jpg "Anatomía de una figura Matplotlib")
+  ![Anatomía de una figura Matplotlib](/algorithms-and-data-structures/algorithm-analysis/Assets/images/Anatonia-de-un-grafico-matplotlibjpg.jpg "Anatomía de una figura Matplotlib")
 
 ---
 
@@ -121,7 +121,7 @@
   | 40000                        | 10.5534478 | 4.393168    | 6.989210 |
   | 50000                        | 10.5772942 | 3.511714    | 7.839530 |
 
-  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Quick Sort](/Matlplotlib/Graphics/GraphicQuickSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Quick Sort")
+  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Quick Sort](/algorithms-and-data-structures/algorithm-analysis/Matplotlib/Graphics/GraphicQuickSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Quick Sort")
 
 - ## **MERGE SORT:**
 
@@ -165,7 +165,7 @@
   | 40000                        | 20.97384071 | 3.730722    | 4.930550 |
   | 50000                        | 22.32296576 | 0.939189    | 9.778050 |
 
-  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Merge Sort](/Matlplotlib/Graphics/GraphicMergeSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Merge Sort")
+  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Merge Sort](/algorithms-and-data-structures/algorithm-analysis/Matplotlib/Graphics/GraphicMergeSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Merge Sort")
 
 - ## **BUBBLE SORT:**
 
@@ -209,7 +209,7 @@
   | 40000                        | 39735.964451084 | 31.545510   | 2426.54121 |
   | 50000                        | 64264.998022662 | 14.926888   | 3763.59214 |
 
-  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Bubble Sort](/Matlplotlib/Graphics/GraphicBubbleSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Bubble Sort")
+  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Bubble Sort](/algorithms-and-data-structures/algorithm-analysis/Matplotlib/Graphics/GraphicBubbleSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Bubble Sort")
 
 - ## **SELECTION SORT:**
 
@@ -253,7 +253,7 @@
   | 40000                        | 1703.792668314 | 13.47621    | 29.583210 |
   | 50000                        | 2774.136048427 | 6.216103    | 54.013101 |
 
-  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Selection Sort](/Matlplotlib/Graphics/GraphicSelectionSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Selection Sort")
+  ![Gráfica comparativa Big-O del tiempo promedio de Ejecución Selection Sort](/algorithms-and-data-structures/algorithm-analysis/Matplotlib/Graphics/GraphicSelectionSort.png "Gráfica comparativa Big-O del tiempo promedio de Ejecución Selection Sort")
 
 ---
 
