@@ -10,8 +10,11 @@
 \usepackage{caption}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
-\title{\textbf{COMPARACIÓN DE ALGORITMOS DE ORDENAMIENTO}}
-\author{Abel Edmundo Borit Guitton, Luis Alberto Borit Guitton, Jesus Alpaca}
+\title{\textbf{%
+    Universidad Nacional de San Agustín \\
+    Maestría en Ciencias de la Computación \\
+    \large Análisis de Rendimiento de Algoritmos de Ordenamiento}}
+\author{Abel Edmundo Borit Guitton, Luis Alberto Borit Guitton}
 % \date{\today}
 \date{1 de agosto de 2023}
 
@@ -22,10 +25,10 @@
 \subsection{Introducción de algoritmos}
 En informática, se llaman algoritmos el conjunto de instrucciones sistemáticas y previamente definidas que se utilizan para realizar una determinada tarea.
 
-Se puede entender un algoritmo como una secuencia de pasos finitos bien definidos que resuelven un problema. Por ejemplo, la ejecución de tareas cotidianas tan simples como cepillarse los dientes, lavarse las manos o seguir el manual de instrucciones de armado de un mueble, se pueden ver como un algoritmo.
+Se puede entender [1] un algoritmo como una secuencia de pasos finitos bien definidos que resuelven un problema. Por ejemplo, la ejecución de tareas cotidianas tan simples como cepillarse los dientes, lavarse las manos o seguir el manual de instrucciones de armado de un mueble, se pueden ver como un algoritmo.
 
-\subsection{Introducción de Notación BigO}
-La Notación Big-O es una forma de medir el tiempo lo bien que escala un programa o un algoritmo y el tiempo que tardará en ejecutar. Esta medición nos resultará muy útil para comparar la eficiencia de dos algoritmos, por ejemplo de ordenamiento.
+\subsection{Introducción de Notación Big-O}
+La [2] Notación Big-O es una forma de medir el tiempo lo bien que escala un programa o un algoritmo y el tiempo que tardará en ejecutar. Esta medición nos resultará muy útil para comparar la eficiencia de dos algoritmos, por ejemplo de ordenamiento.
 
 \begin{figure}[h]
 \centering
@@ -46,7 +49,7 @@ Matplotlib es una librería open source que pertenece a Python en la que se pued
 
 \section{ALGORITMOS}
 \subsection{QUICK SORT}
-Quick sort es un algoritmo de ordenación basado en el enfoque divide y vencerás donde: Una matriz se divide en subarreglos seleccionando un elemento pivote (elemento seleccionado de la matriz). Al dividir la matriz, el elemento pivote debe colocarse de tal manera que los elementos menores que el pivote se mantengan en el lado izquierdo y los elementos mayores que el pivote estén en el lado derecho del pivote. Los subarreglos izquierdo y derecho también se dividen utilizando el mismo enfoque. Este proceso continúa hasta que cada subarreglo contiene un solo elemento. En este punto, los elementos ya están ordenados. Finalmente, los elementos se combinan para formar una matriz ordenada.
+[3] Quick sort es un algoritmo de ordenación basado en el enfoque divide y vencerás donde: Una matriz se divide en subarreglos seleccionando un elemento pivote (elemento seleccionado de la matriz). Al dividir la matriz, el elemento pivote debe colocarse de tal manera que los elementos menores que el pivote se mantengan en el lado izquierdo y los elementos mayores que el pivote estén en el lado derecho del pivote. Los subarreglos izquierdo y derecho también se dividen utilizando el mismo enfoque. Este proceso continúa hasta que cada subarreglo contiene un solo elemento. En este punto, los elementos ya están ordenados. Finalmente, los elementos se combinan para formar una matriz ordenada.
 
     \begin{table}[h!]
         \centering
@@ -70,7 +73,7 @@ Quick sort es un algoritmo de ordenación basado en el enfoque divide y vencerá
     \end{enumerate}
         
 \subsection{MERGE SORT}
-Merge Sort es uno de los algoritmos de ordenación más populares que se basa en el principio del algoritmo divide y vencerás. El método de ordenamiento MergeSort funciona dividiendo una matriz en subarreglos más pequeños, ordenando cada subarreglo y luego fusionando los subarreglos ordenados para formar el arreglo ordenado final. En términos simples, podemos decir que el proceso de ordenación por fusión consiste en dividir la matriz en dos mitades, ordenar cada mitad y luego volver a unir las mitades ordenadas. Este proceso se repite hasta que se ordena toda la matriz.
+[4] Merge Sort es uno de los algoritmos de ordenación más populares que se basa en el principio del algoritmo divide y vencerás. El método de ordenamiento MergeSort funciona dividiendo una matriz en subarreglos más pequeños, ordenando cada subarreglo y luego fusionando los subarreglos ordenados para formar el arreglo ordenado final. En términos simples, podemos decir que el proceso de ordenación por fusión consiste en dividir la matriz en dos mitades, ordenar cada mitad y luego volver a unir las mitades ordenadas. Este proceso se repite hasta que se ordena toda la matriz.
 
     \begin{table}[H]
         \centering
@@ -94,7 +97,7 @@ Merge Sort es uno de los algoritmos de ordenación más populares que se basa en
     \end{enumerate}
 
 \subsection{BUBBLE SORT}
-Bubble sort es un algoritmo de ordenación que compara dos elementos adyacentes y los intercambia hasta que están en el orden previsto. Funciona revisando cada elemento de la lista que va a ser ordenada con el siguiente, intercambiándolos de posición si están en el orden equivocado. Es necesario revisar varias veces toda la lista hasta que no se necesiten más intercambios, lo cual significa que la lista está ordenada. Este algoritmo obtiene su nombre de la forma con la que suben por la lista los elementos durante los intercambios, como si fueran pequeñas "burbujas".
+[5] Bubble sort es un algoritmo de ordenación que compara dos elementos adyacentes y los intercambia hasta que están en el orden previsto. Funciona revisando cada elemento de la lista que va a ser ordenada con el siguiente, intercambiándolos de posición si están en el orden equivocado. Es necesario revisar varias veces toda la lista hasta que no se necesiten más intercambios, lo cual significa que la lista está ordenada. Este algoritmo obtiene su nombre de la forma con la que suben por la lista los elementos durante los intercambios, como si fueran pequeñas "burbujas".
 
     \begin{table}[H]
         \centering
@@ -118,7 +121,7 @@ Bubble sort es un algoritmo de ordenación que compara dos elementos adyacentes 
     \end{enumerate}
 
 \subsection{SELECTION SORT}
-Selection sort es un algoritmo de ordenación que selecciona el elemento más pequeño de una lista sin ordenar en cada iteración y coloca ese elemento al principio de la lista sin ordenar. Es decir, busca el mínimo elemento de la lista, lo intercambia con el primero, luego busca el siguiente mínimo en el resto de la lista, después intercambiarlo con el segundo.
+[6] Selection sort es un algoritmo de ordenación que selecciona el elemento más pequeño de una lista sin ordenar en cada iteración y coloca ese elemento al principio de la lista sin ordenar. Es decir, busca el mínimo elemento de la lista, lo intercambia con el primero, luego busca el siguiente mínimo en el resto de la lista, después intercambiarlo con el segundo.
 
     \begin{table}[H]
         \centering
@@ -163,7 +166,7 @@ Selection sort es un algoritmo de ordenación que selecciona el elemento más pe
 % *****************************************************************
 
 \section{IMPLEMENTACION}
-En el siguiente enlace \href{https://www.google.com}{Repositorio GitHub} se podrá visualizar toda la implementación realizada. Cuenta con un file system estructurado para cada algoritmo usado, archivos txt de donde se tomarán los datos de entrada para los algoritmos, una carpeta donde está el código usado para realizar gráficas con el Matplotlib como sus gráficas correspondientes y también un archivo README.md propio del proyecto y repositorio.
+En el siguiente enlace \href{https://github.com/abelborit/computer-science-master/tree/main/MCC-01_algorithms-and-data-structures}{Repositorio GitHub} se podrá visualizar toda la implementación realizada. Cuenta con un file system estructurado para cada algoritmo usado, archivos txt de donde se tomarán los datos de entrada para los algoritmos, una carpeta donde está el código usado para realizar gráficas con el Matplotlib como sus gráficas correspondientes y también un archivo README.md propio del proyecto y repositorio.
 
 \section{RESULTADOS}
 \subsection{QUICK SORT}
@@ -441,5 +444,14 @@ En el siguiente enlace \href{https://www.google.com}{Repositorio GitHub} se podr
 \end{enumerate}
 Es importante tener en cuenta que los resultados de tiempo de ejecución pueden variar según el hardware y el entorno de ejecución utilizado para las pruebas. Se recomienda realizar pruebas adicionales y comparaciones en un contexto específico antes de tomar decisiones finales sobre qué algoritmo y lenguaje de programación utilizar en un proyecto real.
 
+
+\begin{thebibliography}{widest entry} 
+  \bibitem[1]{} Mamber, U. Introduction to Algorithms. A Creative Approach
+  \bibitem[2]{} Cormen, Thomas; Leiserson, Charles; Rivest, Ronald; Stein, Clifford (2009). Introduction to Algorithms (Third ed.)
+  \bibitem[3]{} Cormen, Thomas; Leiserson, Charles; Rivest, Ronald; Stein, Clifford (2009). Introduction to Algorithms (Third ed.)
+  \bibitem[4]{} Astrachan, Owen (2003).
+  \bibitem[5]{} Knuth, Donald (1998). "Section 5.2.4: Sorting by Merging". Sorting and Searching. The Art of Computer Programming
+  \bibitem[6]{} ITIS IS04: Capítulo 10. Introducción al Análisis de Algoritmos
+ \end{thebibliography}
 
 \end{document}
