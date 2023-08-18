@@ -32,3 +32,28 @@
   - Ejecutar el código mínimo 5 veces y luego obtener el promedio de tiempo de procesamiento y la desviación estandar.
   - Medir el tiempo para diferentes tamaños de entrada, por ejemplo si implementa algún algoritmo de ordenamiento, realizar los experimentos para listas con tamaño de: 100, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000, 30000, 40000 y 50000 elementos.
   - Una vez se obtenga el tiempo de procesamiento para diferentes tamaños de entrada y para los tres lenguajes generar gráficos comparativos usando Matplotlib.
+
+---
+
+## 2. Análisis de grafos (graphs-analysis)
+
+#### 2.1 Competencias:
+
+- Implementar, analizar y comparar algoritmos eficientes para la solución de problemas computacionales.
+- Implementa estructuras de datos adecuadas.
+
+#### 2.2 Material:
+
+- Formato del informe:
+  - LaTex
+- Lenguajes de programación:
+  - Golang (Go)
+  - JavaScript
+
+#### 2.3 Asignación:
+
+- Implementar una solución al problema del agente viajero. Puede utilizar heurísticas, estas tienen un costo aceptable; sin embargo, no llegan a la solución óptima. Algunas heurísticas que puede utilizar son:
+  - Algoritmos genéticos.
+  - Busqueda de cuervos.
+  - Busquedas locales.
+  - Enjambre de partículas.
