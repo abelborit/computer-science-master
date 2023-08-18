@@ -9,6 +9,13 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{xcolor}
+\definecolor{guinda}{rgb}{0.28, 0.02, 0.03}
+\usepackage[left=2.5cm, right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 \title{\textbf{%
     Universidad Nacional de San Agustín \\
@@ -19,7 +26,52 @@
 \date{17 de agosto de 2023}
 
 \begin{document}
+\begin{titlepage}
+    \begin{center}
+    \begin{tikzpicture}[remember picture, overlay]  
+        \definecolor{guinda}{rgb}{0.28, 0.02, 0.03}
+        \draw[guinda, line width=3pt, rounded corners=10pt]
+        ([shift={(2cm,-2cm)}]current page.north west)
+        rectangle
+        ([shift={(-2cm,2cm)}]current page.south east);
+    \end{tikzpicture}
+
+    \centering
+            {\huge\textbf{Universidad Nacional de San Agustín}}\\
+            \vspace{6mm}
+            \begin{figure}[h]
+                \centering           
+                \includegraphics[height=6cm]{Escudo_UNSA.png}
+            \end{figure}
+            \vspace{6mm}
+            {\LARGE\textbf{Escuela Profesional Ciencias de la Computación}}\\
+            \vspace{5mm}
+            {\LARGE\textbf{Maestría en Ciencias de la Computación}}
+            \vspace{6mm}\\
+            {\Large Algoritmos y Estructura de Datos}
+            \vspace{5mm}\\
+            \textcolor{guinda}{\rule{\linewidth}{0.75mm}}\\
+            \vspace{2mm}
+            \begin{spacing}{1.5}
+            {\LARGE\textsc{Análisis del Problema del Agente Viajero} }
+            \end{spacing}
+            \textcolor{guinda}{\rule{\linewidth}{0.75mm}}\\
+            \vspace{1cm}
+            \Large\textbf{Docente: Ph.D.(c) Vicente Machaca Arceda}\\
+            \vspace{1.3cm} 
+            \Large\textbf{Participantes:}\\    
+            \vspace{3mm}
+            \Large Abel E. Borit Guitton \\
+            \Large Luis A. Borit Guitton \\
+            \Large Betzy J. Yarín Ramírez \\
+            \vspace{2cm}
+            \Huge\textbf{2023}
+
+    \end{center}
+\end{titlepage}
 \maketitle
+\tableofcontents
+\clearpage
 
 \section{INTRODUCCION}
 \subsection{Introducción a Teoria de Grafos}
@@ -246,7 +298,7 @@ En el siguiente enlace \href{https://github.com/abelborit/computer-science-maste
 
 Es importante tener en cuenta que los resultados de tiempo de ejecución pueden variar según el hardware y el entorno de ejecución utilizado para las pruebas (así como se demostró en las implementaciones del presente análisis). Se recomienda realizar pruebas adicionales y comparaciones en un contexto específico antes de tomar decisiones finales sobre qué algoritmo y lenguaje de programación utilizar en un proyecto real.
 
-
+\clearpage
 \begin{thebibliography}{widest entry} 
   \bibitem[1]{} Bender \& Williamson 2010, p. 148.
   \bibitem[2]{} Behzad, Arash; Modarres, Mohammad (2002)
