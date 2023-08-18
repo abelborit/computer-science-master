@@ -178,7 +178,7 @@ func main() {
 	}
 
 	// Obtener la ruta absoluta de la carpeta Assets
-	assetsPath := filepath.Join(currentDirectory, "MCC-01_algorithms-and-data-structures", "graphs-analysis", "Assets")
+	assetsPath := filepath.Join(currentDirectory, "MCC-01_algorithms-and-data-structures", "graphs-analysis", "minimumSpanningTree", "Assets")
 
 	// Definir la cantidad de nodos que va a procesar
 	quantityNodes := "1"
