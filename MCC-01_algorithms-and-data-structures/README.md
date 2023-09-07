@@ -57,3 +57,40 @@
   - Busqueda de cuervos.
   - Busquedas locales.
   - Enjambre de partículas.
+
+---
+
+## 3. KD-Tree & KNN Classifier
+
+#### 3.1 Competencias:
+
+- Implementar, analizar el algoritmo KNN Classifier
+- Implementa estructuras de datos adecuadas.
+
+#### 3.2 Material:
+
+- Formato del informe:
+  - LaTex
+- Formato de las diapositivas:
+  - LaTex
+- Lenguajes de programación:
+  - Python
+
+#### 3.3 Asignación:
+
+La estructura KD-Tree es una estructura multidimensional de k dimensiones. Esta permite implementar busquedas por similitud como K Nearest Neighbor o Closest point. Adicionalmente, se puede usar esta estructura como un clasificador. Se debe implementar este clasificador en el tema de su preferencia. A continuación detallamos el algoritmo:
+
+```
+------------------------------------------------------------
+Algorithm 1: KNN Classifier
+------------------------------------------------------------
+  Input: X: training data; y: object to be classified.
+  Output: Classification for y.
+  Extract features of each sample;
+  Build KD-Tree;
+  Select KNN of y in X;
+  Class(y) ← max of classes ( k closest objects );
+------------------------------------------------------------
+```
+
+Usted es libre de escoger el descriptor. Este descriptor es un método que toma como entrada una muestra de la base de datos y retorna un vector de carácterísticas, luego este vector representa un punto en el KD-Tree.

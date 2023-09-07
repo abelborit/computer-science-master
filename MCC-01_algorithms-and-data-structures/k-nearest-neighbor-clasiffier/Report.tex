@@ -1,0 +1,323 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{imagenes/}}
+\usepackage{cite} % o use \usepackage{natbib}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{xcolor}
+\definecolor{guinda}{rgb}{0.28, 0.02, 0.03}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\title{\textbf{%
+    Universidad Nacional de San Agustín \\
+    Maestría en Ciencias de la Computación \\
+    \large Trabajo de Investigación}}
+\author{Abel E. Borit Guitton, Luis A. Borit Guitton, Betzy J. Yarín Ramírez}
+% \date{\today}
+\date{31 de agosto de 2023}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+    \begin{tikzpicture}[remember picture, overlay]  
+        \definecolor{guinda}{rgb}{0.28, 0.02, 0.03}
+        \draw[guinda, line width=3pt, rounded corners=10pt]
+        ([shift={(2cm,-2cm)}]current page.north west)
+        rectangle
+        ([shift={(-2cm,2cm)}]current page.south east);
+    \end{tikzpicture}
+
+    \centering
+            {\huge\textbf{Universidad Nacional de San Agustín}}\\
+            \vspace{6mm}
+            \begin{figure}[h]
+                \centering           
+                \includegraphics[height=6cm]{Img/Escudo_UNSA.png}
+            \end{figure}
+            \vspace{6mm}
+            {\LARGE\textbf{Escuela Profesional de Ciencia de la Computación}}\\
+            \vspace{5mm}
+            {\LARGE\textbf{Maestría en Ciencias de la Computación}}
+            \vspace{6mm}\\
+            {\Large Algoritmos y Estructura de Datos}
+            \vspace{5mm}\\
+            \textcolor{guinda}{\rule{\linewidth}{0.75mm}}\\
+            \vspace{2mm}
+            \begin{spacing}{1.5}
+            {\LARGE\textsc{Análisis de viabilidad crediticia mediante KD-Tree y KNN}}\\
+            {\Large\textsc{Un enfoque de Aprendizaje Automático para evaluar el riesgo de pago de nuevos solicitantes.}}
+            \end{spacing}
+            \textcolor{guinda}{\rule{\linewidth}{0.75mm}}\\
+            \vspace{1cm}
+            \Large\textbf{Docente: Ph.D.(c) Vicente Machaca Arceda}\\
+            \vspace{1.3cm} 
+            \Large\textbf{Participantes:}\\    
+            \vspace{3mm}
+            \Large Abel E. Borit Guitton \\
+            \Large Luis A. Borit Guitton \\
+            \Large Betzy J. Yarín Ramírez \\
+            \vspace{2cm}
+            \Huge\textbf{2023}
+
+    \end{center}
+\end{titlepage}
+\maketitle
+\begin{sloppypar}
+\tableofcontents
+\clearpage
+
+\section{INTRODUCCIÓN}
+
+En la actualidad, el análisis de datos y la toma de decisiones basadas en información precisa se han convertido en pilares esenciales para una variedad de campos, y la industria financiera no es una excepción. La concesión de créditos despliega un papel crucial en la economía global, pero conlleva consigo riesgos inherentes para instituciones financieras y prestamistas. \\
+
+La evaluación precisa y efectiva de la solvencia crediticia de los individuos se vuelve esencial para minimizar riesgos financieros, y en este contexto, las técnicas avanzadas de análisis de datos juegan un papel crucial. En este panorama, la importancia de una evaluación crediticia sólida cobra un nuevo significado. El proceso de determinar si un solicitante es elegible para recibir un crédito debe ser respaldado por enfoques que permitan una visión integral y precisa. Aquí es donde la integración de las técnicas de Árboles KD (K-Dimensional) y el algoritmo de vecinos más cercanos (KNN) como herramientas valiosas para el análisis crediticio. Estos métodos no solo permiten una evaluación enriquecedora y precisa de la solvencia crediticia, sino que también tienen el potencial de revelar patrones y relaciones ocultas en los datos que podrían escapar a una observación superficial.\\
+
+Los Árboles KD y el algoritmo KNN se alzan como herramientas cruciales por varias razones:
+\begin{enumerate}
+    \item \textbf{Consideración Multidimensional:} La evaluación crediticia implica múltiples dimensiones de datos, como la edad de un individuo, crédito otorgado y si fue un buen pagador o no. Los Árboles KD permiten una segmentación multidimensional, dividiendo el espacio de características en subespacios coherentes, lo que resulta en búsquedas más eficientes y una evaluación más precisa. 
+    \item \textbf{Identificación de Perfiles Similares: }El algoritmo KNN, al localizar vecinos cercanos en función de atributos similares, ofrece la posibilidad de identificar perfiles crediticios similares. Esto permite una evaluación más precisa al comparar la solvencia de un individuo con la de otros que comparten características similares.
+    \item \textbf{Detalles Ocultos y Patrones:} La combinación de Árboles KD y KNN puede revelar patrones ocultos y relaciones en los datos. Esto es fundamental en la evaluación crediticia, ya que permite descubrir tendencias en el historial crediticio que podrían no ser evidentes a simple vista.
+    \item \textbf{Eficiencia y Rendimiento: }Los Árboles KD y KNN trabajan en conjunto para optimizar la búsqueda de vecinos cercanos en espacios multidimensionales. Esto resulta en una evaluación crediticia más eficiente, reduciendo el tiempo y los recursos requeridos para tomar decisiones informadas.
+\end{enumerate}
+
+Sin embargo, la interpretación precisa de los datos crediticios no se limita solo al uso de estas técnicas. La normalización y escalado de los atributos juegan un papel vital en el proceso. \\
+El escalador MaxMin emerge como un aliado esencial para tratar la diversidad en la escala de los atributos. A través de la normalización, se garantiza que las diferentes características contribuyan de manera equitativa a la evaluación final, evitando distorsiones causadas por variaciones de escala.\\
+
+En resumen, el análisis crediticio se beneficia enormemente de la fusión de enfoques avanzados. La combinación de Árboles KD y el algoritmo KNN brinda una evaluación multidimensional precisa y una toma de decisiones informada. A su vez, el escalador MaxMin asegura la comparabilidad y equidad en la evaluación, permitiendo que instituciones financieras y prestamistas aborden el otorgamiento de créditos con mayor confianza y eficacia en un entorno financiero cada vez más complejo y dinámico.
+\clearpage
+
+% *****************************************************************
+\section{TRABAJO DE INVESTIGACIÓN}
+La estructura KD-Tree es una estructura multidimensional de k dimensiones. Esta permite implementar búsquedas por similitud como K Nearest Neighbor o Closest point. Adicionalmente, se usará esta estructura como un clasicador. A continuación detallamos el algoritmo:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Img/KNNClassifier.png}
+    
+    \caption{\label{fig:algoritmoClassifier}Algoritmo KNN}
+\end{figure}
+Se usará un descriptor para tomar como entrada una muestra de la base de datos y retornar un vector de características, luego este vector representará un punto en el KD-Tree. 
+
+% *****************************************************************
+
+\section{ALGORITMOS}
+
+\subsection{KD-Tree}
+Estructura de datos muy utilizada en el campo de la informática para organizar y buscar datos en espacios de varias dimensiones, como coordenadas (x, y) o características múltiples. 
+El K-DTree es especialmente útil para buscar puntos cercanos y para realizar búsquedas en rangos en espacios de alta dimensionalidad. \cite{Bishop2006PRML}
+
+
+
+\begin{enumerate}
+    \item Características:       
+    \begin{enumerate}
+       \item Eficiencia en la búsqueda, al seguir el camino descendente del árbol, se puede descartar rápidamente regiones que no contienen los puntos de interés.
+       \item Eficiencia en alta dimensión, en comparación con enfoques de fuerza bruta, el Árbol KD puede ofrecer una mejora significativa en la eficiencia de búsqueda en espacios de alta dimensión.
+       \item Exploración equilibrada, debido a su naturaleza alternante de selección de dimensiones, el Árbol KD asegura una exploración equilibrada de las diferentes dimensiones, evitando el sesgo en ciertas direcciones.
+    \end{enumerate}
+    
+    \item Funcionalidad:       
+    \begin{enumerate}
+       \item \textbf{Estructura de datos jerárquica:} Cada nodo representa un hiperplano de corte en una dimensión específica del espacio multidimensional.     
+       \item \textbf{División Recursiva:} El espacio de datos se divide recursivamente en subespacios por medio de hiperplanos ortogonales a los ejes de coordenadas, creando una estructura en forma de árbol binario.
+       \item \textbf{Selección de Dimensión: }En cada nivel del árbol, se selecciona una dimensión alternante para realizar la partición.
+       \item \textbf{Puntos de Bifurcación: }Divide el espacio en dos subespacios. El punto de bifurcación es elegido de manera que los puntos se distribuyan en torno a la mediana en la dimensión seleccionada.
+    \end{enumerate} 
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Img/KDtree.png}
+    \caption{\label{fig:funcionamientoKDtree}Visualización de Trabajo del Árbol KD}
+    \end{figure}
+
+    \item Inconvenientes:      
+    \begin{enumerate}
+       \item  Deterioro en espacios de alta dimensión debido al fenómeno conocido como "maldición de la dimensionalidad". En espacios de muchas dimensiones, la mayoría de los puntos pueden estar a la misma distancia de un punto de consulta, lo que reduce la eficacia de la partición del árbol.
+       \item Construcción costosa, especialmente para conjuntos de datos grandes, a medida que los datos cambian puede requerir operaciones complicadas.
+       \item Distribución irregular, puede conducir a una partición desigual y subóptima del espacio, cuando los datos están agrupados de manera irregular.
+    \end{enumerate} 
+\end{enumerate}
+
+\subsection{ALGORITMO K Vecinos más cercanos (K Nearest Neighbor, KNN)} 
+Es un algoritmo simple y versátil de aprendizaje supervisado, utilizado para tareas de clasificación y regresión. Pertenece  al campo del aprendizaje automático y minería de datos. \cite{Alpaydin2014IntroML}
+
+\begin{enumerate}
+    \item \textbf{En clasificación,} el punto de datos dado se clasifica según la mayoría del tipo de sus vecinos. El punto de datos se asigna a la clase más frecuente entre sus k vecinos más cercanos     
+    \item Mientras que en \textbf{regresión}, se calcula un valor promedio basado en los valores de propiedad de los vecinos más cercanos. 
+\end{enumerate}
+
+Tanto en clasificación como regresión, la entrada son los K ejemplos de entrenamiento más cercanos en el espacio de características; se puede asignar un peso a las contribuciones de los vecinos, de esta manera los vecinos más cercanos contribuyen más al promedio que los más distantes.
+
+\begin{enumerate}
+    \item Características:       
+    \begin{enumerate}
+       \item No paramétrico (no asumen nada sobre cómo está la distribución de los datos).     
+       \item Se basa en la información de los puntos de datos cercanos en el espacio de características.
+       \item No requiere una etapa de entrenamiento como otros algoritmos de aprendizaje supervisado para generar el modelo, utiliza todos los datos en la fase de prueba.
+       \item El entrenamiento es rápido.
+    \end{enumerate} 
+    
+    \item Funcionalidad:       
+    \begin{enumerate}
+       \item \textbf{Datos de entrenamiento:} Conjunto de datos que contiene ejemplos con características y etiquetas.
+       \item \textbf{Nuevo punto:} Cuando se presenta un nuevo punto, el algoritmo busca los puntos más cercanos en función de una medida de distancia.
+       \item \textbf{Medida de distancia:} Se calcula la distancia entre el nuevo punto y todos los puntos en el conjunto de entrenamiento.
+       \item \textbf{Selección de vecinos: }Los K puntos con las distancias más pequeñas al nuevo punto son seleccionados como "vecinos más cercanos".
+       \item \textbf{Clasificación o regresión:} En el caso de clasificación, se cuenta cuántos vecinos pertenecen a cada clase y se asigna la clase más común al nuevo punto. En regresión, se promedian los valores de los vecinos para predecir el valor del nuevo punto.
+       \item \textbf{Resultado final: }La clase asignada o el valor predicho se aplica al nuevo punto como su resultado final.
+    \end{enumerate} 
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Img/KNNImage.png}
+    \caption{\label{fig:funcionamientoKNN}Visualización de Trabajo del Algoritmo KNN}
+    \end{figure}
+    
+    \item Inconvenientes:      
+    \begin{enumerate}
+       \item Fuerte dependencia de los datos.   
+       \item Exactitud, es muy sensible al ruido y a características irrelevantes.
+       \item Lentitud, puede llevar tiempo obtener respuestas cuando se tiene conjuntos de datos grandes. En la fase de prueba requiere más tiempo y recursos de memoria.
+    \end{enumerate} 
+\end{enumerate}
+
+Su simplicidad y eficacia en la resolución de varios problemas, lo convierten en una herramienta esencial en el conjunto de técnicas de análisis de datos. \cite{GeorgeGaryStanley2009Algorithms}
+
+\subsection{Escalador MaxMin}
+Es una técnica de normalización, que ajusta los valores de las características a un rango específico. Cuando se aplica al contexto de KNN (vecinos más cercanos) y KD-Tree (Árbol KD), esta técnica puede mejorar la eficacia y la equidad de la evaluación en problemas de búsqueda y análisis en espacios multidimensionales.
+% *****************************************************************
+\clearpage
+\section{IMPLEMENTACIÓN}
+En el siguiente enlace \href{https://github.com}{Repositorio GitHub} se podrá visualizar toda la implementación realizada y también un archivo README.md propio del proyecto y repositorio.
+\vspace{0.7cm} 
+
+En el siguiente enlace \href{https://github.com}{Video de YouTube} se podrá visualizar el video subido en YouTube para una mejor explicación del proyecto.
+
+\vspace{0.7cm} 
+Para la implementación del KNN y KD-Tree, importamos las bibliotecas necesarias~\ref{library-import}.
+\begin{algorithm}[H]
+\caption{Importación de Bibliotecas}
+\label{library-import}
+\begin{algorithmic}
+\State \textbf{importar} \textsc{pandas} \textbf{como} \textsc{pd}
+\State \textbf{importar} \textsc{numpy} \textbf{como} \textsc{np}
+\State \textbf{importar} \textsc{matplotlib.pyplot} \textbf{como} \textsc{plt}
+\end{algorithmic}
+\end{algorithm}
+
+En el Código~\ref{KDTree-code}, podemos observar la implementación del KD-Tree.
+\begin{algorithm}[H]
+\caption{KD-Tree}
+\label{KDTree-code}
+\begin{algorithmic}
+\Function{ConstruirKDTree}{$puntos, profundidad$}
+    \If{$\text{longitud}(puntos) = 0$}
+        \State \Return $Nulo$
+    \EndIf
+    \State $eje \gets profundidad \mod \text{longitud}(puntos[0])$
+    \State Ordenar $puntos$ por el valor en el $eje$-ésimo eje
+    \State $mediana \gets \text{longitud}(puntos) \, \text{dividido} \, 2$
+    \State $nodo \gets$ nuevo \Call{KDNode}{$puntos[mediana]$, $eje$}
+    \State $nodo.\text{izquierda} \gets$ \Call{ConstruirKDTree}{$puntos[0:mediana]$, $profundidad + 1$}
+    \State $nodo.\text{derecha} \gets$ \Call{ConstruirKDTree}{$puntos[mediana+1:\text{longitud}(puntos)]$, $profundidad + 1$}
+    \State \Return $nodo$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+En el Código~\ref{KNN-code}, podemos observar la implementación del KNN.
+\begin{algorithm}[H]
+\caption{K-Nearest Neighbors}
+\label{KNN-code}
+\begin{algorithmic}
+\Function{BuscarKNN}{$nodo, punto, k$}
+    \Function{BúsquedaRecursiva}{$nodo, punto, k, cercanos$}
+        \If{$nodo = \text{Nulo}$}
+            \State \Return
+        \EndIf
+        \State $distancia \gets \text{norma}(\text{punto} - \text{nodo.punto})$
+        \If{$\text{longitud}(cercanos) < k$}
+            \State Agregar $(\text{distancia}, \text{nodo.punto})$ a $cercanos$
+            \State Ordenar $cercanos$ por la distancia
+        \ElsIf{$\text{distancia} < \text{cercanos}[-1][0]$}
+            \State Eliminar el último elemento de $cercanos$
+            \State Agregar $(\text{distancia}, \text{nodo.punto})$ a $cercanos$
+            \State Ordenar $cercanos$ por la distancia
+        \EndIf
+        \State $distancia\_eje \gets \text{punto}[\text{nodo.eje}] - \text{nodo.punto}[\text{nodo.eje}]$
+        \State $nodo\_cerca, nodo\_lejano \gets$ elegir entre $(\text{nodo.izquierda}, \text{nodo.derecha})$ y $(\text{nodo.derecha}, \text{nodo.izquierda})$ según $distancia\_eje \leq 0$
+        \State \Call{BúsquedaRecursiva}{$nodo\_cerca, punto, k, cercanos$}
+        \If{$|\text{distancia\_eje}| < \text{cercanos}[-1][0]$}
+            \State \Call{BúsquedaRecursiva}{$nodo\_lejano, punto, k, cercanos$}
+        \EndIf
+    \EndFunction    
+    \State $puntos\_cercanos \gets []$
+    \State \Call{BúsquedaRecursiva}{$nodo, punto, k, puntos\_cercanos$}
+    \State \Return $[\text{punto} \, \text{para} \, \text{distancia}, \text{punto} \, \text{en} \, \text{puntos\_cercanos}]$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{RESULTADOS}
+\vspace{0.5cm}
+\subsection{Distribución de pagadores y deudores} Según la edad y monto del crédito
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Img/ImgPagovsNoPago.png}    \caption{\label{fig:PagadoresDeudores}Gráfica de Dispersión de clientes pagadores vs deudores}
+    \end{figure}
+\vspace{0.5cm}
+\subsection{Inclusión de un Nuevo Solicitante \textbf{+}} En el análisis de pagadores y deudores
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Img/ImgNuevoSolicitante.png}    \caption{\label{fig:nuevoSolicitante}Gráfica de Dispersión con el Nuevo Solicitante}
+    \end{figure}
+\vspace{0.5cm}
+\subsection{Mapa de Calor para Predicción de Pago de Créditos}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Img/MapaCalor.png}    \caption{\label{fig:MapaCalorPC}Distribución de Predicciones de Pago de Créditos}
+    \end{figure}
+\vspace{0.5cm}
+\subsection{Funcionamiento del Modelo en términos de métricas}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Img/MetricasEvaluacion.png}    \caption{\label{fig:MapaCalor} Gráfico de barras del desempeño del Modelo}
+    \end{figure}
+El resultado de las métricas depende de la evaluación del modelo y de los datos utilizados para el entrenamiento y prueba. Cada una se calcula utilizando diferentes fórmulas.  F1-Score depende de las primeras métricas y busca encontrar un equilibrio entre ellas. \\
+El tener valores iguales en las métricas es un indicio que el modelo está obteniedo resultados consistentes, también se le atribuye a la sencillez del modelo.
+% *****************************************************************
+\clearpage
+
+\section{CONCLUSIONES}
+
+\begin{enumerate}
+    \item \textbf{K-Nearest Neighbors (KNN) como algoritmo de clasificación:} El código implementa el algoritmo K-Nearest Neighbors (KNN) para la clasificación. KNN es un algoritmo simple pero efectivo que se basa en encontrar los vecinos más cercanos a un nuevo punto para predecir su clase. En este caso, se utilizó la distancia euclidiana como métrica de distancia.
+    \item \textbf{Preparación y procesamiento de datos:} Los datos se leen de un archivo CSV y se filtran para separar a los clientes que cumplieron y no cumplieron con el pago del crédito. Las características relevantes (edad y monto del crédito) se seleccionan y se escalan para que todas las características tengan el mismo peso.
+    \item \textbf{Evaluación de Riesgo Crediticio:} La implementación demuestra cómo se puede utilizar un enfoque de vecinos más cercanos (KNN) y un árbol KD para evaluar el riesgo crediticio de nuevos solicitantes. Esta técnica permite clasificar a los solicitantes en función de su similitud con los clientes existentes en términos de edad y monto de crédito.
+    \item \textbf{Importancia del KD-Tree: }La estructura KD-Tree se utiliza para organizar eficientemente los datos y acelerar la búsqueda de vecinos cercanos. Esto es especialmente útil cuando el conjunto de datos es grande, ya que mejora el tiempo de búsqueda y hace que la clasificación de nuevos solicitantes sea más rápida.
+    \item \textbf{Importancia de los Datos de Entrenamiento:} La calidad y representatividad de los datos de entrenamiento influyen en la precisión del modelo. Una base de datos con un número suficiente de ejemplos y una distribución equilibrada de clases puede conducir a decisiones más confiables. La inclusión de más atributos y datos de diferentes fuentes también puede mejorar la precisión.
+    \item \textbf{Toma de Decisiones Basada en Vecinos Cercanos:} La clasificación de un nuevo solicitante se basa en la categoría de sus vecinos más cercanos. En este caso, se utiliza un valor de k=3 para determinar la clase. Esta decisión se basa en la proporción de vecinos cercanos que pertenecen a la clase "Sí pagó", lo que influye en la decisión final.
+    \item \textbf{Visualización de Resultados: }La representación gráfica de los clientes buenos y malos, así como del nuevo solicitante en el espacio de características (edad y monto de crédito), proporciona una visión clara de cómo se toman las decisiones de clasificación. Esta visualización permite entender mejor cómo se separan las clases en función de estas características.
+
+\end{enumerate}
+En general, la implementación demuestra cómo un enfoque de aprendizaje automático basado en KNN y KD-Tree puede ser utilizado para la evaluación crediticia. Sin embargo, es importante recordar que este enfoque es una simplificación y que una implementación más completa requeriría pruebas exhaustivas y validación en conjuntos de datos más grandes y diversos.
+
+
+
+\clearpage
+
+\bibliographystyle{plain} % Elige un estilo de citación
+\bibliography{bibfile} % Nombre del archivo .bib (sin extensión)
+
+\end{sloppypar}
+\end{document}

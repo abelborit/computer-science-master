@@ -1,0 +1,178 @@
+\documentclass [xcolor=svgnames, t] {beamer} 
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs, comment} 
+\usepackage[absolute, overlay]{textpos} 
+\useoutertheme{infolines} 
+\setbeamercolor{title in head/foot}{bg=internationalorange}
+\setbeamercolor{author in head/foot}{bg=dodgerblue}
+\usepackage{csquotes}
+\usepackage[style=verbose-ibid,backend=bibtex]{biblatex}
+\bibliography{bibfile}
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{textpos}
+\usepackage{tikz}
+\usetheme{Madrid}
+\definecolor{myuniversity}{RGB}{0, 60, 113}
+\definecolor{internationalorange}{RGB}{231, 93,  42}
+ 	\definecolor{dodgerblue}{RGB}{0, 119,202}
+\usecolortheme[named=myuniversity]{structure}
+\usepackage{tikz}
+
+\institute[UNSA]{\large \textbf{Universidad Nacional de San Agustín }\\ Maestría en Ciencias de la Computación \\ Algoritmos y Estructuras de Datos}
+
+\title[Trabajo de Investigación]{Análisis de viabilidad crediticia mediante KD-Tree y KNN} 
+\subtitle{Un enfoque de Aprendizaje Automático para evaluar el riesgo de pago de nuevos solicitantes}
+
+\author[Abel E. Borit, Luis A. Borit, Betzy J. Yarín]{Abel E. Borit Guitton, Luis A. Borit Guitton, Betzy J. Yarín Ramírez} 
+
+\date{Agosto, 2023}
+
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\begin{document}
+\begin{frame}
+ \titlepage   
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\logo{\includegraphics[scale=0.08]{Img/Escudo_UNSA.png}~%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Índice}
+\vspace{1cm}
+\begin{center}
+   \begin{itemize}
+     \item Introducción
+     \item Problema
+     \item Objetivos
+     \item Implementación del KD-Tree y KNN
+     \item Métricas
+     \item Conclusiones
+     \item Referencias
+ \end{itemize} 
+\end{center} 
+\end{frame}
+
+\begin{frame}{Introducción}
+    La relevancia de KNN y KD-Tree en diversos contextos:
+    \begin{center}    
+    \begin{columns}[onlytextwidth,T]
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Identificación de patrones:
+    \begin{itemize}
+        \item Detectan similitudes y estructuras en datos complejos.
+    \end{itemize}
+    \item Eficiencia en búsquedas:
+    \begin{itemize}
+        \item Optimizan la búsqueda de vecinos cercanos en conjuntos de datos extensos.
+    \end{itemize}
+    \item Análisis exploratorio:
+    \begin{itemize}
+        \item Facilitan la exploración y comprensión de conjuntos de datos multidimensionales.
+    \end{itemize}
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Img/KDtree_KNN.png}
+    \caption{1. Kd-Tree y KNN}
+  %  \label{fig:my_label}
+\end{figure}
+\end{columns}
+\end{center} 
+\end{frame}
+
+\begin{frame}{Problema}
+\begin{center}
+%\vspace{1 cm}
+\textbf{Clasificación de solicitantes de crédito utilizando KD-Tree y K-Nearest Neighbors (KNN)}\\
+\vspace{0.8cm}
+\begin{itemize}
+\item  La implementación utilizará los datos de edad y monto de crédito de clientes que pagaron y no pagaron préstamos en el pasado. Mediante el algoritmo K-Nearest Neighbors (KNN) y una estructura KD-Tree, clasificará nuevos solicitantes en estas categorías. Se requiere tomar decisiones informadas sobre aprobaciones de crédito basadas en similitudes con el historial de pagos.
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}{Objetivos}
+ \vspace{1cm}   
+\begin{itemize}
+    \item Implementar KNN y KD-Tree: Optimizar la clasificación de nuevos solicitantes de crédito basados en características de edad y monto de crédito.
+    \item Evaluar la viabilidad crediticia basada en similitudes con historiales de pagos anteriores.
+    \item Mostrar los resultados de la clasificación en un gráfico que destaque la posición de los solicitantes en función de sus características de edad y monto de crédito.
+\end{itemize}
+\end{frame}
+\begin{frame}
+{KD-Tree y KNN\autocite{GeorgeGaryStanley2009Algorithms}}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{Img/ResumenKNN_KDTree.png}
+    %\caption{}
+  %  \label{fig:my_label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Implementación KD-Tree\autocite{Bishop2006PRML}}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{Img/AlgoritmoKD-Tree.png}
+    \caption{2. Pseudocódigo KD-Tree}
+  %  \label{fig:my_label}
+\end{figure}  
+\end{frame}
+
+\begin{frame}{Implementación KNN\autocite{Alpaydin2014IntroML}}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{Img/AlgoritmoKNN.png}
+    \caption{3. Pseudocódigo KNN}
+  %  \label{fig:my_label}
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}{Métricas}
+    \begin{center}    
+    \begin{columns}[onlytextwidth,T]
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item Cada una se calcula utilizando diferentes fórmulas. F1-Score depende de las primeras métricas y busca encontrar un equilibrio entre ellas. 
+       \item El resultado de las métricas depende de la evaluación del modelo y de los datos utilizados para el entrenamiento y prueba. 
+       \item El tener valores iguales en las métricas es un indicio que el modelo está obteniedo resultados consistentes, también se le atribuye a la sencillez del modelo.
+    \end{itemize} 
+
+\column{0.5\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth]{Img/MetricasEvaluacion.png}
+        \caption{4.Desempeño del Modelo}
+      %  \label{fig:my_label}
+    \end{figure}
+\end{columns}
+\end{center} 
+\end{frame}
+
+
+\begin{frame}{Conclusiones}
+
+\begin{itemize}
+    \item La implementación de KNN y KD-Tree para evaluar el riesgo crediticio demuestra ser eficaz para clasificar nuevos solicitantes en base a características como edad y monto de crédito.
+    \item La estructura KD-Tree mejora la eficiencia en la búsqueda de vecinos cercanos, acelerando el proceso de clasificación.
+    \item Los resultados muestran cómo los solicitantes son clasificados en función de la similitud con clientes anteriores, destacando el impacto de los vecinos cercanos en la decisión.
+     \item El valor de k (número de vecinos más cercanos) se establece en 3 en la implementación. Elegir un valor óptimo para k es una decisión importante y puede afectar la precisión del modelo.
+\end{itemize}    
+\end{frame}
+\begin{frame}{Referencias}
+   \printbibliography
+\end{frame}
+
+\end{document}
